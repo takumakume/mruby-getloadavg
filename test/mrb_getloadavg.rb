@@ -1,17 +1,8 @@
-##
-## Getloadavg Test
-##
-
-assert("Getloadavg#hello") do
-  t = Getloadavg.new "hello"
-  assert_equal("hello", t.hello)
-end
-
-assert("Getloadavg#bye") do
-  t = Getloadavg.new "hello"
-  assert_equal("hello bye", t.bye)
-end
-
-assert("Getloadavg.hi") do
-  assert_equal("hi!!", Getloadavg.hi)
+assert("Getloadavg::getloadavg") do
+  loadavg = Getloadavg::getloadavg(10)
+  assert_equal(loadavg.size, 3)
+  3.times do |i|
+    assert_true(loadavg[i] > 0)
+    assert_true(loadavg[i].is_a?(Float))
+  end
 end
